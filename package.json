@@ -15,7 +15,7 @@
     "react-dom": "19.0.0-rc.1",
     "framer-motion": "10.12.3",
     "gsap": "3.12.2",
-    "three": "0.158.0",
+    "three": "0.159.0",
     "three-mesh-bvh": "^0.8.0",
     "@react-three/fiber": "^8.0.0",
     "clsx": "1.2.1",
