@@ -1,13 +1,15 @@
 "use client";
 
-import CinematicLanding from '../components/CinematicLanding';
-import StoryTimeline from '../components/StoryTimeline';
-import ProjectUniverse from '../components/ProjectUniverse';
-import SkillsMatrix from '../components/SkillsMatrix';
-import AchievementVault from '../components/AchievementVault';
-import Roadmap from '../components/Roadmap';
-import WhyHireMe from '../components/WhyHireMe';
-import ContactTerminal from '../components/ContactTerminal';
+import dynamic from 'next/dynamic';
+
+const CinematicLanding = dynamic(() => import('../components/CinematicLanding'), { ssr: false });
+const StoryTimeline = dynamic(() => import('../components/StoryTimeline'), { ssr: false });
+const ProjectUniverse = dynamic(() => import('../components/ProjectUniverse'), { ssr: false });
+const SkillsMatrix = dynamic(() => import('../components/SkillsMatrix'), { ssr: false });
+const AchievementVault = dynamic(() => import('../components/AchievementVault'), { ssr: false });
+const Roadmap = dynamic(() => import('../components/Roadmap'), { ssr: false });
+const WhyHireMe = dynamic(() => import('../components/WhyHireMe'), { ssr: false });
+const ContactTerminal = dynamic(() => import('../components/ContactTerminal'), { ssr: false });
 
 export default function Page() {
   return (
@@ -23,6 +25,3 @@ export default function Page() {
     </main>
   );
 }
-
-// Force dynamic rendering to avoid Next.js prerendering client-only content
-export const dynamic = 'force-dynamic';
