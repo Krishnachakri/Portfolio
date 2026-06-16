@@ -1,9 +1,25 @@
 const React = require('react');
 
+// List of framer-motion props to strip so they don't get passed to DOM elements
+const motionProps = [
+  'initial', 'animate', 'exit', 'whileHover', 'whileTap', 'whileInView',
+  'viewport', 'transition', 'drag', 'dragConstraints', 'onDrag', 'onDragEnd',
+  'onDragStart', 'onViewportEnter', 'onViewportLeave', 'variants', 'custom',
+  'inherit', 'layout', 'layoutId'
+  // Keep style, className, ref, key because they're valid DOM props or React special props
+];
+
 function makeMotionTag(tag) {
   return React.forwardRef(function MotionTag(props, ref) {
     const { children, ...rest } = props || {};
-    return React.createElement(tag, { ref, ...rest }, children);
+    // Strip motion-specific props
+    const domProps = {};
+    for (const key in rest) {
+      if (!motionProps.includes(key)) {
+        domProps[key] = rest[key];
+      }
+    }
+    return React.createElement(tag, { ref, ...domProps }, children);
   });
 }
 
